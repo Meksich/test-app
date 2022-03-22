@@ -1,0 +1,17 @@
+<div class="players">
+  <div class="players__card" *ngFor="let player of players">
+
+    <div class="players__img-wrapper">
+      <img src="../../assets/football-player.jpg" />
+    </div>
+    <div>
+      <h2 class="players__header">{{player.name}} {{player.surname}}</h2>
+      <div class="players__info">
+        <div>|Team: {{player.team}} |</div>
+        <div>Phone number: +38{{player.phone}} |</div>
+        <div>Transfer cost: {{player.transfer_cost}} |</div>
+      </div>
+    </div>
+    <button class="players__button" (click)="onPlayersButtonClick(player.id)">Show more</button>
+  </div>
+</div>

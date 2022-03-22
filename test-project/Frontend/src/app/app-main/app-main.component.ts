@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
   templateUrl: './app-main.component.html',
   styleUrls: ['./app-main.component.css']
 })
-export class AppMainComponent implements OnInit {
+export class AppMainComponent {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
-  ngOnInit() {
+  onProceedButtonClick() {
+    this.router.navigate(['/teams']);
   }
 
 }

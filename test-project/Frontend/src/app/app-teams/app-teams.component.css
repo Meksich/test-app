@@ -1,0 +1,54 @@
+.teams {
+    width: 80%;
+    margin: auto;
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.teams__card {
+    margin: 1%;
+    padding: 1%;
+    min-width: 42%;
+    border: solid;
+    border-color: black;
+    height: 40%;
+    float: left;
+}
+
+.teams__header {
+    display: flex;
+    margin-bottom: 5%;
+}
+
+.teams__img-wrapper {
+    border: solid;
+    padding: 0.1rem;
+    width: 4.1rem;
+    height: 4.1rem;
+    margin-right: 5%;
+}
+
+img {
+    width: 4rem;
+    height: 4rem;
+}
+
+.teams__info {
+    font-size: 20px;
+}
+
+.teams__button {
+    border: 0;
+    border-radius: 0px;
+    width: 10rem;
+    height: 2.5rem;
+    display: block;
+    margin-left: auto;
+    margin-right: 0%;
+}
+
+.teams__button:hover {
+    cursor: pointer;
+    background-color: rgb(224, 224, 224);
+}

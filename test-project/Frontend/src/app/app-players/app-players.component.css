@@ -1,0 +1,43 @@
+.players {
+    width: 50%;
+    margin: auto;
+}
+
+.players__card {
+    margin: 1%;
+    padding: 1%;
+    border: solid;
+    border-radius: 2px;
+    border-color: black;
+    display: flex;
+}
+
+.players__img-wrapper {
+    margin-right: 3%;
+}
+
+.players__header {
+    margin: 2% 0;
+}
+
+img {
+    width: 4rem;
+    height: 4rem;
+}
+
+.players__button {
+    height: 3rem;
+    display: block;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: 0%;
+}
+
+.players__button:hover {
+    cursor: pointer;
+}
+
+.players__info {
+    display: flex;
+}

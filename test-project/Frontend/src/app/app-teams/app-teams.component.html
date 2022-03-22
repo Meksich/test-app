@@ -1,0 +1,14 @@
+<div class="teams">
+  <div class="teams__card" *ngFor="let team of teams">
+    <div class="teams__header">
+      <div class="teams__img-wrapper">
+        <img src="../../assets/team-logo.jpg" />
+      </div>
+      <h2>{{team.name}}</h2>
+    </div>
+    <div class="teams__info">Budget: {{team.budget}}</div>
+    <div class="teams__info">Players: {{team.players}}</div>
+    <div class="teams__info">Date of foundation: {{team.date}}</div>
+    <button class="teams__button" (click)="onTeamsButtonClick(team.id)">Show more</button>
+  </div>
+</div>

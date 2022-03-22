@@ -1,17 +1,17 @@
 <header class="header">
   <div>
-    <a class="header__title">Foot&ball</a>
+    <a class="header__title" [routerLink]="['/']">Foot&ball</a>
 </div>
 <nav id="nav-links" class="header__nav">
   <ul>
     <li class="header__nav-item">
-      <a class="heaader__nav-link" href="">Teams</a>
+      <a class="heaader__nav-link" [routerLink]="['/teams']">Teams</a>
     </li>
     <li class="header__nav-item">
-      <a class="heaader__nav-link" href="">Players</a>
+      <a class="heaader__nav-link" [routerLink]="['/players']">Players</a>
     </li>
     <li class="header__nav-item">
-      <a class="heaader__nav-link" href="">Make transfer</a>
+      <a class="heaader__nav-link" [routerLink]="['/transfer']">Make transfer</a>
     </li>
   </ul>
 </nav>
