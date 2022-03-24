@@ -23,19 +23,19 @@
         <form class="modal-create__body-form mt-4 mb-5" [formGroup]="teamForm" (ngSubmit)="onSubmit()">
           <label for="name">Team name:</label>
           <input type="text" name="name" formControlName="name"/>
-          <p class="modal__error-text"></p>
+          <p class="modal__error-text">{{errorMessageName}}</p>
 
           <label for="country">Country:</label>
           <input type="text" name="country" formControlName="country"/>
-          <p class="modal__error-text"></p>
+          <p class="modal__error-text">{{errorMessageCountry}}</p>
 
           <label for="owner">Owner name:</label>
           <input type="text" name="owner" formControlName="owner"/>
-          <p class="modal__error-text"></p>
+          <p class="modal__error-text">{{errorMessageOwner}}</p>
 
           <label for="budget">Budget:</label>
           <input type="text" name="budget" formControlName="budget"/>
-          <p class="modal__error-text"></p>
+          <p class="modal__error-text">{{errorMessageBudget}}</p>
 
           <button type="submit" class="btn btn-outline-primary fw-bold border-2 mt-3" >Create</button>
         </form>

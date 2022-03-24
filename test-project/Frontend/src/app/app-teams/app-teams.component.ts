@@ -4,14 +4,19 @@ import { Team } from '../team';
 import { TeamService } from '../services/team.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { ValidatorService } from '../services/validator.service';
 
 @Component({
   selector: 'app-teams',
   templateUrl: './app-teams.component.html',
   styleUrls: ['./app-teams.component.css', '../global-css/modals.css'],
-  providers: [TeamService, DatePipe]
+  providers: [TeamService, ValidatorService, DatePipe]
 })
 export class AppTeamsComponent implements OnInit{
+  errorMessageName: string;
+  errorMessageCountry: string;
+  errorMessageOwner:string;
+  errorMessageBudget: string;
   modalShow:boolean = false;
 
   teamForm = new FormGroup({
@@ -23,7 +28,8 @@ export class AppTeamsComponent implements OnInit{
 
   teams: any;
 
-  constructor(private router: Router, private service: TeamService, private datePipe: DatePipe) { }
+  constructor(private router: Router, private service: TeamService, 
+              private datePipe: DatePipe, private validator: ValidatorService) { }
 
   ngOnInit() {
     this.service.getTeams().subscribe(data =>
@@ -39,6 +45,10 @@ export class AppTeamsComponent implements OnInit{
   }
 
   onSubmit(){
+    this.validate(this.teamForm.value);
+    if (this.validator.errors > 0){
+      return;
+    }
     let createTeam: Team = this.teamForm.value;
     let currentDate = new Date();
     createTeam.foundationDate = this.datePipe.transform(currentDate,'yyyy-MM-dd');
@@ -46,5 +56,12 @@ export class AppTeamsComponent implements OnInit{
     createTeam.budget = Number(this.teamForm.value.budget);
     this.service.postTeam(createTeam);
     window.location.reload();
+  }
+
+  validate(form: any){
+    this.errorMessageName = this.validator.validateName(form.name);
+    this.errorMessageCountry = this.validator.validateName(form.country);
+    this.errorMessageOwner = this.validator.validateDate(form.owner);
+    this.errorMessageBudget = this.validator.validateNumeric(form.budget);
   }
 }

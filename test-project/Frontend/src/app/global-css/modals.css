@@ -43,7 +43,7 @@
 }
 
 .modal-create__body {
-    padding-top: 40px;
+    padding-top: 20px;
     padding-bottom: 70px;
     display: flex;
     
@@ -56,8 +56,10 @@
     flex-direction: column;
 }
 
-.error_text{
+.modal__error-text{
     color: red;
     font-style: italic;
     margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 10px;
 }
