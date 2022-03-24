@@ -1,3 +1,33 @@
-<p>
-  app-show-team works!
-</p>
+<div class="show-team">
+  <div class="d-flex justify-content-around">
+    <div class="show-team__img">
+      <img src="../../assets/team-logo.jpg" />
+    </div>
+    <div class="show-team__text">
+      <h3 class=" fs-3 fw-normal text-dark py-3">{{team.name}}</h3>
+      <div class="d-flex">
+        <div class="d-flex flex-column py-3">
+          <div class="show-team__display-text font-weight-bold py-3">Since: {{team.foundationDate}}</div>
+        </div>
+        <div class="d-flex flex-column py-3 px-5">
+          <div class="show-team__display-text font-weight-bold py-3">Country: {{team.country}}</div>
+        </div>
+      </div>
+      <div class="d-flex">
+        <div class="d-flex flex-column py-3">
+          <div class="show-team__display-text font-weight-bold py-3">Owner: {{team.owner}}</div>
+        </div>
+        <div class="d-flex flex-column py-3 px-5">
+          <div class="show-team__display-text font-weight-bold py-3">Players in team: {{team.playersNumber}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-between p-5 mx-5">
+    <p class="show-team__budget pl-4">Budget:  {{team.budget}}$</p>
+    <div class="show-team__buttons d-flex justify-content-around">
+      <button class="show-team__delete-button px-3 mx-2" (click)="onDeleteClick()">Delete</button>
+      <button class="show-team__edit-button">Edit</button>
+    </div>
+  </div>
+</div>

@@ -34,4 +34,24 @@ export class TeamService {
       })
     }).subscribe();
   }
+
+  updateTeam(team: Team, id:any){
+    const body = {
+      name: team.name, 
+      country: team.country,
+      playersNumber: team.playersNumber,
+      foundationDate: team.foundationDate,
+      owner: team.owner,
+      budget: team.budget
+    }
+    this.http.put("http://localhost:8081/teams/" + id, JSON.stringify(body), {
+      headers: new HttpHeaders({
+        'Content-Type':'application/json'
+      })
+    }).subscribe();
+  }
+
+  deleteTeam(id: any){
+    return this.http.delete("http://localhost:8081/teams/" + id);
+  }
 }
