@@ -1,0 +1,61 @@
+.show-team {
+    height: 645px;
+}
+
+.show-team__img {
+    margin: 5vh 0;
+    border-radius: 10px;
+    border: solid;
+    width: fit-content;
+    height: fit-content;
+}
+
+.show-team__text {
+    margin-top: 8vh;
+    margin-right: 9vw;
+    max-width: 40vw;
+}
+
+.show-team__display-text {
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.show-team__budget {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.show-team__buttons {
+    width: fit-content;
+}
+
+.show-team__delete-button {
+    background-color: white;
+    border-radius: 5px;
+    padding-left: 0.5vw;
+    width: 15vw;
+    height: 5vh;
+}
+
+.show-team__delete-button:hover {
+    background-color: #D9d9dc;
+}
+
+.show-team__edit-button {
+    background-color: black;
+    border-radius: 5px;
+    padding-left: 0.5vw;
+    width: 15vw;
+    height: 5vh;
+    color: #C6C6C6;
+}
+
+.show-team__edit-button:hover {
+    background-color: #454545;
+}
+
+img {
+    width: 20rem;
+    height: 20rem;
+}

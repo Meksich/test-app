@@ -35,4 +35,27 @@ export class PlayerService {
     }).subscribe();
   }
 
+  updatePlayer(player: Player, id: number){
+    const body = {
+      "id": id,
+      "name": player.name,
+      "surname": player.surname,
+      "phoneNumber": player.phoneNumber,
+      "careerStartDate": player.careerStartDate,
+      "birthDate": player.birthDate,
+      "transferCost": player.transferCost,
+      "team":{
+        "id": id
+      }
+    }
+    this.http.put("http://localhost:8081/players/" + id, JSON.stringify(body), {
+      headers: new HttpHeaders({
+        'Content-Type':'application/json'
+      })
+    }).subscribe();
+  }
+
+  deletePlayer(id: any){
+    return this.http.delete("http://localhost:8081/players/" + id).subscribe();
+  }
 }

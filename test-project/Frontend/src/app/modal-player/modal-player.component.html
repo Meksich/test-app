@@ -27,8 +27,10 @@
         <p class="modal__error-text">{{errorMessageCost}}</p>
 
         <label for="teamName">Team name:</label>
-        <input type="text" name="teamName" formControlName="teamName" />
-        <p class="modal__error-text"></p>
+        <select name="teamName" (change)="selectChangeTeamHandler($event)">
+          <option disabled selected value> -- select an option -- </option>
+          <option *ngFor="let team of teams" value="{{team.id}}">{{team.name}}</option>
+        </select>
 
         <button type="submit" class="btn btn-outline-primary fw-bold border-2 mt-3">Create</button>
       </form>

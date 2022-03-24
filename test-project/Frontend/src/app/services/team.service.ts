@@ -37,6 +37,7 @@ export class TeamService {
 
   updateTeam(team: Team, id:any){
     const body = {
+      id: id,
       name: team.name, 
       country: team.country,
       playersNumber: team.playersNumber,
@@ -52,6 +53,6 @@ export class TeamService {
   }
 
   deleteTeam(id: any){
-    return this.http.delete("http://localhost:8081/teams/" + id);
+    return this.http.delete("http://localhost:8081/teams/" + id).subscribe();
   }
 }

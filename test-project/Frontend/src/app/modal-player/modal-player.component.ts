@@ -20,6 +20,7 @@ export class ModalPlayerComponent implements OnInit {
   errorMessageCost: string;
   teams: any;
   modalShow:boolean;
+  selectedTeam: number = 1;
 
   constructor(private teamService: TeamService, private playerService: PlayerService,
     private datePipe: DatePipe, private validator: ValidatorService) { }
@@ -36,7 +37,6 @@ export class ModalPlayerComponent implements OnInit {
     careerStartDate: new FormControl(''),
     birthDate: new FormControl(''),
     transferCost: new FormControl(''),
-    teamName: new FormControl(''),
   });
 
   onSubmit(){
@@ -48,10 +48,10 @@ export class ModalPlayerComponent implements OnInit {
     let currentDate = new Date();
     createPlayer.careerStartDate = this.datePipe.transform(currentDate,'yyyy-MM-dd');
     createPlayer.transferCost = Number(this.playerForm.value.transferCost);
-    var team = this.teams.find(team1 => team1.name == this.playerForm.value.teamName);
+    var team = this.teams[this.selectedTeam];
     this.playerService.postPlayer(createPlayer, team.id);
-    // team.playersNumber++;
-    // this.teamService.putTeam(team);
+    team.playersNumber++;
+    this.teamService.updateTeam(team, team.id);
     window.location.reload();
   }
 
@@ -60,10 +60,14 @@ export class ModalPlayerComponent implements OnInit {
   }
 
   validate(form: any){
-    this.errorMessagePhone = this.validator.validatePhone(form.phone);
+    this.errorMessagePhone = this.validator.validatePhone(form.phoneNumber);
     this.errorMessageName = this.validator.validateName(form.name);
     this.errorMessageSurname = this.validator.validateName(form.surname);
     this.errorMessageDate = this.validator.validateDate(form.birthDate);
     this.errorMessageCost = this.validator.validateNumeric(form.transferCost);
+  }
+
+  selectChangeTeamHandler (event: any) {
+    this.selectedTeam = event.target.value;
   }
 }

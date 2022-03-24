@@ -1,3 +1,74 @@
-<p>
-  app-show-player works!
-</p>
+<div class="show-team">
+  <div class="d-flex justify-content-around">
+    <div class="show-team__img">
+      <img src="../../assets/football-player.jpg" />
+    </div>
+    <div class="show-team__text">
+      <h3 class=" fs-3 fw-normal text-dark py-3">{{player.name}} {{player.surname}}</h3>
+      <div class="d-flex">
+        <div class="d-flex flex-column py-3">
+          <div class="show-team__display-text font-weight-bold py-3">Born: {{player.birthDate}}</div>
+        </div>
+        <div class="d-flex flex-column py-3 px-5">
+          <div class="show-team__display-text font-weight-bold py-3">Start of career: {{player.careerStartDate}}</div>
+        </div>
+      </div>
+      <div class="d-flex">
+        <div class="d-flex flex-column py-3">
+          <div class="show-team__display-text font-weight-bold py-3">Phone: +38{{player.phoneNumber}}</div>
+        </div>
+        <div class="d-flex flex-column py-3 px-5">
+          <div class="show-team__display-text font-weight-bold py-3">Belong to: {{player.teamName}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-between p-5 mx-5">
+    <p class="show-team__budget pl-4">Transfer cost:  {{player.transferCost}}$</p>
+    <div class="show-team__buttons d-flex justify-content-around">
+      <button class="show-team__delete-button px-3 mx-2" (click)="onDeleteClick()">Delete</button>
+      <button class="show-team__edit-button" (click)="onModalClick()">Edit</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-create" *ngIf="modalShow">
+  <div class="modal-create__content">
+    <div class="modal-create__header">
+      <h3 class="display-1 fs-2 fw-normal text-dark text-center my-3">Edit player</h3>
+      <span class="modal__close-button" (click)="onModalClick()">&times;</span>
+    </div>
+    <div class="modal-create__body">
+      <form class="modal-create__body-form mb-5" [formGroup]="playerForm" (ngSubmit)="onSubmit()">
+        <label for="name">Player name:</label>
+        <input type="text" name="name" formControlName="name" />
+        <p class="modal__error-text">{{errorMessageName}}</p>
+
+        <label for="surname">Player surname:</label>
+        <input type="text" name="surname" formControlName="surname" />
+        <p class="modal__error-text">{{errorMessageSurname}}</p>
+
+        <label for="phone">Phone number:</label>
+        <input type="text" name="phoneNumber" formControlName="phoneNumber" />
+        <p class="modal__error-text">{{errorMessagePhone}}</p>
+
+        <label for="birthDate">Birth date in format [yyyy-mm-dd]:</label>
+        <input type="text" name="birthDate" formControlName="birthDate" />
+        <p class="modal__error-text">{{errorMessageDate}}</p>
+
+        <label for="transferCost">Transfer cost:</label>
+        <input type="text" name="transferCost" formControlName="transferCost" />
+        <p class="modal__error-text">{{errorMessageCost}}</p>
+
+        <label for="teamName">Team names:</label>
+        <select name="teamName">
+          <option disabled selected value> -- {{player.teamName}} -- </option>
+        </select>
+        <p class="modal__error-text">you can change team only through transfer</p>
+        
+
+        <button type="submit" class="btn btn-outline-primary fw-bold border-2 mt-3">Update</button>
+      </form>
+    </div>
+  </div>
+</div>
