@@ -1,0 +1,123 @@
+.transfer {
+    width: 79%;
+    height: 15.5rem;
+    display: flex;
+    margin: auto;
+    
+}
+
+.transfer__player {
+    width: 45.4%;
+    min-height: 20%;
+    margin: 1% 7%;
+    padding: 1%;
+    border: solid;
+    border-radius: 15px;
+}
+
+.transfer__team {
+    width: 45.4%;
+    margin: 1% 7%;
+    padding: 1%;
+    border: solid;
+    border-radius: 15px;
+}
+
+.transfer__player-header {
+    display: flex;
+}
+
+.transfer__team-note {
+    font-style: italic;
+    color: #ff7171;
+}
+
+.transfer__team-budget {
+    display: flex;
+}
+
+.transfer__team-comission {
+    margin: 0;
+    color: #ff7171;
+}
+
+.transfer__team-money{
+    margin: 0;
+}
+
+.transfer__player-start-button {
+    border-radius: 15px;
+    width: 50%;
+    height: 20%;
+    margin: 20% 25%;
+}
+
+.transfer__player-start-button:hover {
+    cursor: pointer;
+    background-color: rgb(245, 245, 245);
+}
+
+.arrow-hover {
+    cursor: pointer;
+    position: relative;
+    width: 80px;
+    height: 50px;
+    margin: auto;
+}
+.arrow-hover div {
+    position: relative;
+    top: 20px;
+    width: 90px;
+    height: 10px;
+    background-color: #337AB7;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, .2);
+    left:0;
+    display: block;
+}
+.arrow-hover div::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 10px;
+    top: -11px;
+    right: -8px;
+    background-color: #337AB7;
+    transform: rotate(45deg);
+}
+.arrow-hover div::before {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 10px;
+    top: 11px;
+    right: -8px;
+    background-color: #337AB7;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, .2);
+    transform: rotate(-45deg);
+}
+.arrow-hover:hover {
+    animation: arrow-hover 1s linear infinite;
+}
+@keyframes arrow-hover {
+    0% {
+        left:0;
+    }
+    50% {
+        left:5px;
+    }
+    100% {
+        left:0;
+    }
+}
+
+img {
+    width: 6rem;
+    margin-right: 5%;
+}
+
+.transfer__player-cost {
+    display: block;
+    margin-left: 80%;
+    margin-right: 0%;
+    
+}

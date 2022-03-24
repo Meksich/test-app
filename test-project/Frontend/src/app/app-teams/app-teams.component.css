@@ -9,7 +9,7 @@
 .teams__card {
     margin: 1%;
     padding: 1%;
-    min-width: 42%;
+    min-width: 47.9%;
     border: solid;
     border-color: black;
     height: 40%;
@@ -24,8 +24,8 @@
 .teams__img-wrapper {
     border: solid;
     padding: 0.1rem;
-    width: 4.1rem;
-    height: 4.1rem;
+    width: 4.6rem;
+    height: 4.6rem;
     margin-right: 5%;
 }
 
@@ -52,3 +52,11 @@ img {
     cursor: pointer;
     background-color: rgb(224, 224, 224);
 }
+
+.teams__create-button {
+    width: 7rem;
+    height: 3rem;
+    display: block;
+    margin: auto;
+}
+

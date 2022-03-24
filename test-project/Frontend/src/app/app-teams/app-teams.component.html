@@ -7,8 +7,40 @@
       <h2>{{team.name}}</h2>
     </div>
     <div class="teams__info">Budget: {{team.budget}}</div>
-    <div class="teams__info">Players: {{team.players}}</div>
-    <div class="teams__info">Date of foundation: {{team.date}}</div>
+    <div class="teams__info">Players: {{team.playersNumber}}</div>
+    <div class="teams__info">Date of foundation: {{team.foundationDate}}</div>
     <button class="teams__button" (click)="onTeamsButtonClick(team.id)">Show more</button>
   </div>
 </div>
+<div *ngIf="modalShow">
+  <div class="modal-create">
+    <div class="modal-create__content">
+      <div class="modal-create__header">
+        <h3 class="display-1 fs-3 fw-normal text-dark text-center my-3">Create team</h3>
+        <span class="modal__close-button" (click)="onModalClick()">&times;</span>
+      </div>
+      <div class="modal-create__body">
+        <form class="modal-create__body-form mt-4 mb-5" [formGroup]="teamForm" (ngSubmit)="onSubmit()">
+          <label for="name">Team name:</label>
+          <input type="text" name="name" formControlName="name"/>
+          <p class="modal__error-text"></p>
+
+          <label for="country">Country:</label>
+          <input type="text" name="country" formControlName="country"/>
+          <p class="modal__error-text"></p>
+
+          <label for="owner">Owner name:</label>
+          <input type="text" name="owner" formControlName="owner"/>
+          <p class="modal__error-text"></p>
+
+          <label for="budget">Budget:</label>
+          <input type="text" name="budget" formControlName="budget"/>
+          <p class="modal__error-text"></p>
+
+          <button type="submit" class="btn btn-outline-primary fw-bold border-2 mt-3" >Create</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<button class="teams__create-button" (click)="onModalClick()">Create new</button>

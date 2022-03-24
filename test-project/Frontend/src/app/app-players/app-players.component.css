@@ -38,6 +38,13 @@ img {
     cursor: pointer;
 }
 
+.players__create-button {
+    width: 7rem;
+    height: 3rem;
+    display: block;
+    margin: auto;
+}
+
 .players__info {
     display: flex;
 }

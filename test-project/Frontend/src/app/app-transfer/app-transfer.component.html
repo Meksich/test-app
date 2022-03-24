@@ -1,3 +1,56 @@
-<p>
-  app-transfer works!
-</p>
+<div class="transfer">
+  <div class="transfer__player">
+    <div *ngIf="playerPresent; else notPresent">
+      <div class="transfer__player-header">
+        <img src="../../assets/football-player.jpg" alt="player photo">
+        <div>
+          <h2>{{player.name}} {{player.surname}}</h2>
+          <p>{{player.teamName}}</p>
+        </div>
+      </div>
+      <div>
+        <p>Phone number: {{player.phoneNumber}}</p>
+        <p>Career start: {{player.careerStartDate}} </p>
+      </div>
+      <p class="transfer__player-cost">{{player.transferCost}}$</p>
+    </div>
+    <ng-template #notPresent>
+      <label for="choose">Choose a player:</label>
+
+      <select name="choose" (change)="selectChangePlayerHandler($event)">
+        <option *ngFor="let player of players" value="{{player.id}}">{{player.name}} {{player.surname}}</option>
+      </select>
+      <button class="transfer__player-start-button" (click)="startTransfer()">Start transfer</button>
+    </ng-template>
+  </div>
+  <div class="arrow-hover" (click)="makeTransfer()">
+    <div></div>
+  </div>
+  <div class="transfer__team">
+    <div *ngIf="playerPresent">
+      <div *ngIf="teamPresent; else notPresentTeam">
+        <div class="transfer__player-header">
+          <img src="../../assets/team-logo.jpg" alt="player photo">
+          <div>
+            <h2>{{team.name}}</h2>
+            <p>{{team.playersNumber}} players</p>
+          </div>
+        </div>
+        <p>Since {{team.foundationDate}}</p>
+        <p class="transfer__team-note">*Please note that a 10% commission will be charged</p>
+        <div class="transfer__team-budget">
+          <p class="transfer__team-money">Budget: {{team.budget}}$ - </p>
+          <p class="transfer__team-comission">{{pay}}$</p>
+        </div>
+      </div>
+      <ng-template #notPresentTeam>
+        <label for="choose">Choose a team:</label>
+
+        <select name="choose" (change)="selectChangeTeamHandler($event)">
+          <option disabled selected value> -- select an option -- </option>
+          <option *ngFor="let team of teams" value="{{team.id}}">{{team.name}}</option>
+        </select>
+      </ng-template>
+    </div>
+  </div>
+</div>

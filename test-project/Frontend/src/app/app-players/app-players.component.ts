@@ -1,44 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Player } from '../player';
+import { PlayerService } from '../player.service';
+import { DatePipe } from '@angular/common';
+import { TeamService } from '../team.service';
 
 @Component({
   selector: 'app-players',
   templateUrl: './app-players.component.html',
-  styleUrls: ['./app-players.component.css']
+  styleUrls: ['./app-players.component.css', '../global-css/modals.css'],
+  providers: [PlayerService, TeamService, DatePipe]
 })
-export class AppPlayersComponent {
+export class AppPlayersComponent implements OnInit{
+  modalShow:boolean = false;
+  players: Player[];
 
-  players = [
-    {
-      id: 1,
-      name: "Delta",
-      surname: "Lima",
-      team: "alpha",
-      transfer_cost: 500,
-      phone: "0963611949"
-    },
-    {
-      id: 2,
-      name: "Foxtrot",
-      surname: "Oscar",
-      team: "bravo",
-      transfer_cost: 1000,
-      phone: "0666789339"
-    },
-    {
-      id: 3,
-      name: "Echo",
-      surname: "Mike",
-      team: "charlie",
-      transfer_cost: 12000,
-      phone: "0666789876"
-    }
-  ]
+  constructor(private router: Router, private service: PlayerService, private teamService: TeamService) { }
 
-  constructor(private router: Router) { }
+  ngOnInit() {
+    this.service.getPlayers().subscribe(data => this.players = data);
+  }
 
   onPlayersButtonClick(id: number){
     this.router.navigate(['/player', id]);
+  }
+
+  onModalClick(){
+    this.modalShow = !this.modalShow;
   }
 
 }

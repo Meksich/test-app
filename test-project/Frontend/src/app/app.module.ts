@@ -13,6 +13,8 @@ import { AppPlayersComponent } from './app-players/app-players.component';
 import { AppShowPlayerComponent } from './app-show-player/app-show-player.component';
 import { AppTransferComponent } from './app-transfer/app-transfer.component';
 import { AppShowTeamComponent } from './app-show-team/app-show-team.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ModalPlayerComponent } from './modal-player/modal-player.component';
 
 @NgModule({
   declarations: [
@@ -23,10 +25,12 @@ import { AppShowTeamComponent } from './app-show-team/app-show-team.component';
     AppPlayersComponent,
     AppShowPlayerComponent,
     AppTransferComponent,
-    AppShowTeamComponent
+    AppShowTeamComponent,
+    ModalPlayerComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
     RouterModule.forRoot([

@@ -1,0 +1,37 @@
+<div class="modal-create">
+  <div class="modal-create__content">
+    <div class="modal-create__header">
+      <h3 class="display-1 fs-3 fw-normal text-dark text-center my-3">Create player</h3>
+      <span class="modal__close-button" (click)="onModalClick()">&times;</span>
+    </div>
+    <div class="modal-create__body">
+      <form class="modal-create__body-form mt-4 mb-5" [formGroup]="playerForm" (ngSubmit)="onSubmit()">
+        <label for="name">Player name:</label>
+        <input type="text" name="name" formControlName="name" />
+        <p class="modal__error-text"></p>
+
+        <label for="surname">Player surname:</label>
+        <input type="text" name="surname" formControlName="surname" />
+        <p class="modal__error-text"></p>
+
+        <label for="phone">Phone number:</label>
+        <input type="text" name="phoneNumber" formControlName="phoneNumber" />
+        <p class="modal__error-text"></p>
+
+        <label for="birthDate">Birth date:</label>
+        <input type="text" name="birthDate" formControlName="birthDate" />
+        <p class="modal__error-text"></p>
+
+        <label for="transferCost">Transfer cost:</label>
+        <input type="text" name="transferCost" formControlName="transferCost" />
+        <p class="modal__error-text"></p>
+
+        <label for="teamName">Team name:</label>
+        <input type="text" name="teamName" formControlName="teamName" />
+        <p class="modal__error-text"></p>
+
+        <button type="submit" class="btn btn-outline-primary fw-bold border-2 mt-3">Create</button>
+      </form>
+    </div>
+  </div>
+</div>
