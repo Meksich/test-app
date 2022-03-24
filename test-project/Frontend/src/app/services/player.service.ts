@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Player } from './player';
+import { Player } from '../player';
 
 @Injectable()
 export class PlayerService {

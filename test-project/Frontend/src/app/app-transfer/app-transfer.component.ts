@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Player } from '../player';
-import { PlayerService } from '../player.service';
-import { Team } from '../team';
-import { TeamService } from '../team.service';
+import { PlayerService } from '../services/player.service';
+import { TeamService } from '../services/team.service';
 
 @Component({
   selector: 'app-app-transfer',

@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { Team } from '../team';
-import { TeamService } from '../team.service';
+import { TeamService } from '../services/team.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 

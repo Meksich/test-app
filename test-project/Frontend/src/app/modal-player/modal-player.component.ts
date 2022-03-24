@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Player } from '../player';
-import { TeamService } from '../team.service';
+import { TeamService } from '../services/team.service';
 import { DatePipe } from '@angular/common';
-import { PlayerService } from '../player.service';
+import { PlayerService } from '../services/player.service';
 
 @Component({
   selector: 'app-modal-player',
