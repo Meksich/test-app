@@ -18,6 +18,7 @@
       <label for="choose">Choose a player:</label>
 
       <select name="choose" (change)="selectChangePlayerHandler($event)">
+        <option disabled selected value> -- select an option -- </option>
         <option *ngFor="let player of players" value="{{player.id}}">{{player.name}} {{player.surname}}</option>
       </select>
       <button class="transfer__player-start-button" (click)="startTransfer()">Start transfer</button>

@@ -44,12 +44,13 @@ export class ModalPlayerComponent implements OnInit {
     if (this.validator.errors > 0){
       return;
     }
+    console.log("createPlayer");
     let createPlayer: Player = this.playerForm.value;
     let currentDate = new Date();
     createPlayer.careerStartDate = this.datePipe.transform(currentDate,'yyyy-MM-dd');
     createPlayer.transferCost = Number(this.playerForm.value.transferCost);
-    var team = this.teams[this.selectedTeam];
-    this.playerService.postPlayer(createPlayer, team.id);
+    var team = this.teams.find(team1 => team1.id == this.selectedTeam);;
+    this.playerService.postPlayer(createPlayer, this.selectedTeam);
     team.playersNumber++;
     this.teamService.updateTeam(team, team.id);
     window.location.reload();
@@ -60,11 +61,12 @@ export class ModalPlayerComponent implements OnInit {
   }
 
   validate(form: any){
+    this.validator.errors = 0;
     this.errorMessagePhone = this.validator.validatePhone(form.phoneNumber);
     this.errorMessageName = this.validator.validateName(form.name);
     this.errorMessageSurname = this.validator.validateName(form.surname);
     this.errorMessageDate = this.validator.validateDate(form.birthDate);
-    this.errorMessageCost = this.validator.validateNumeric(form.transferCost);
+    this.errorMessageCost = this.validator.validateNumeric(String(form.transferCost));
   }
 
   selectChangeTeamHandler (event: any) {

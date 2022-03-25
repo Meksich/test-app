@@ -6,14 +6,13 @@
 }
 
 .header__title {
-    padding-left: 50%;
     font-weight: 900;
     font-size: 26px;
     color: #37447e;
 }
 
 .header__nav {
-    padding-left: 33%;
+    padding-left: 23%;
 }
 
 .header__nav ul {

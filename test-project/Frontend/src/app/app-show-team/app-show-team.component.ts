@@ -43,7 +43,9 @@ export class AppShowTeamComponent implements OnInit {
       return;
     }
     this.teamService.deleteTeam(this.teamIdFromRoute);
-    this.router.navigate(['/teams']);
+    this.router.navigate(['/teams']).then(() => {
+      window.location.reload();
+    });
   }
 
   onModalClick(){
