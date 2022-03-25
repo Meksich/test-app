@@ -8,7 +8,7 @@ This is simple web-application to manage football teams and players. It was buil
 - [Install](https://angular.io/guide/setup-local#install-the-angular-cli) Angular Cli 
 - [Install](www.java.com/en/download/help/download_options.html) Java (at least 8 version)
 
-##Instalation guide
+## Instalation guide
 - Open terminal in folder you want to store this project
 - Clone project with command ``git clone https://github.com/Meksich/test-app``
 - Proceed to folder with project ``cd test-app/test-project``
