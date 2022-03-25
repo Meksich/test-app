@@ -60,9 +60,7 @@ export class AppTransferComponent implements OnInit{
     this.transferService.makeTransfer(this.team.id, this.player.id)
       .subscribe(response => this.response=response);
     if(name != this.player.teamName)
-      this.router.navigate(['/player', this.player.id]).then(() => {
-        window.location.reload();
-      });
+      window.alert("Success!");
     else
     window.alert("Transfer failed.");
   }

@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.6.4</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<groupId>ua.footballs</groupId>
+		<artifactId>test-app</artifactId>
+		<version>0.1-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
-	<groupId>ua.footballs</groupId>
-	<artifactId>test-app</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>test-app</name>
-	<description>Test app </description>
+
+	<modelVersion>4.0.0</modelVersion>
+
 	<properties>
 		<java.version>11</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.build.outputEncoding>UTF-8</project.build.outputEncoding>
 	</properties>
+
+	<artifactId>Backend</artifactId>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -34,12 +36,19 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<optional>true</optional>
+			<version>1.18.22</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>ua.footballs</groupId>
+			<artifactId>Frontend</artifactId>
+			<version>0.1-SNAPSHOT</version>
+			<type>jar</type>
 		</dependency>
 	</dependencies>
 
@@ -56,6 +65,48 @@
 						</exclude>
 					</excludes>
 				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>2.4.3</version>
+				<configuration>
+					<mainClass>ua.footballs.testapp.TestAppApplication</mainClass>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>3.1.2</version>
+				<executions>
+					<execution>
+						<id>merge</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>unpack</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>ua.footballs</groupId>
+									<artifactId>Frontend</artifactId>
+									<type>jar</type>
+									<overWrite>true</overWrite>
+									<outputDirectory>${project.build.directory}/classes/static</outputDirectory>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

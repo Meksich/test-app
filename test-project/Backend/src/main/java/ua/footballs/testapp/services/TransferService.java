@@ -10,6 +10,8 @@ import ua.footballs.testapp.exceptions.TeamNotFoundException;
 import ua.footballs.testapp.exceptions.TransactionAbortedException;
 import ua.footballs.testapp.repositories.PlayerRepository;
 import ua.footballs.testapp.repositories.TeamRepository;
+import ua.footballs.testapp.services.implementation.PlayerService;
+import ua.footballs.testapp.services.implementation.TeamService;
 
 import java.sql.SQLException;
 import java.util.Objects;
@@ -17,23 +19,19 @@ import java.util.Objects;
 @Service
 @AllArgsConstructor
 public class TransferService {
-    private PlayerRepository playerRepository;
-    private TeamRepository teamRepository;
+    private PlayerService playerService;
+    private TeamService teamService;
 
     @Transactional(rollbackFor = Exception.class)
     public void transfer(Long playerId, Long teamId) throws PlayerNotFoundException, TeamNotFoundException, TransactionAbortedException {
-        if (!playerRepository.existsById(playerId))
-            throw new PlayerNotFoundException("Player with id "+ playerId +" doesn't exist");
-        else if (!teamRepository.existsById(teamId))
-            throw new TeamNotFoundException("Team with id "+ teamId +" doesn't exist");
-        Team team = teamRepository.getById(teamId);
-        Player player = playerRepository.getById(playerId);
+        Team team = teamService.get(teamId);
+        Player player = playerService.get(playerId);
         Team previousTeam = player.getTeam();
         if (Objects.equals(team.getId(), previousTeam.getId()))
             throw new TransactionAbortedException("Teams must differ");
 
         player.setTeam(team);
-        playerRepository.save(player);
+        playerService.update(playerId, player);
 
         team.setPlayersNumber(team.getPlayersNumber() + 1);
         previousTeam.setPlayersNumber(previousTeam.getPlayersNumber() - 1);
@@ -42,8 +40,8 @@ public class TransferService {
         team.setBudget(team.getBudget() - pay);
         if (team.getBudget() < 0)
             throw new TransactionAbortedException("Team budget is to low");
-        teamRepository.save(team);
+        teamService.update(team.getId(), team);
         previousTeam.setBudget(previousTeam.getBudget() + player.getTransferCost());
-        teamRepository.save(previousTeam);
+        teamService.update(previousTeam.getId(), previousTeam);
     }
 }
