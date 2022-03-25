@@ -7,6 +7,7 @@ This is simple web-application to manage football teams and players. It was buil
 ## Before Start
 - [Install](https://angular.io/guide/setup-local#install-the-angular-cli) Angular Cli 
 - [Install](www.java.com/en/download/help/download_options.html) Java (at least 8 version)
+- [Install](https://maven.apache.org/install.html) Maven
 
 ## Instalation guide
 - Open terminal in folder you want to store this project
