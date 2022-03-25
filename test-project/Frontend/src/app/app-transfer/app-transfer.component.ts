@@ -41,8 +41,6 @@ export class AppTransferComponent implements OnInit{
   }
 
   selectChangeTeamHandler (event: any) {
-    if (this.selectedTeam==undefined)
-      return;
     this.selectedTeam = event.target.value;
     this.teamPresent = !this.teamPresent;
     this.team = this.teams.find(team1 => team1.id == this.selectedTeam);;
