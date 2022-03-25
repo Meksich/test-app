@@ -28,6 +28,7 @@
 }
 
 .transfer__team-note {
+    font-size: 12px;
     font-style: italic;
     color: #ff7171;
 }
