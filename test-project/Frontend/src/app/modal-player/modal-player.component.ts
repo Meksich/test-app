@@ -20,7 +20,7 @@ export class ModalPlayerComponent implements OnInit {
   errorMessageCost: string;
   teams: any;
   modalShow:boolean;
-  selectedTeam: number = 1;
+  selectedTeam: number;
 
   constructor(private teamService: TeamService, private playerService: PlayerService,
     private datePipe: DatePipe, private validator: ValidatorService) { }

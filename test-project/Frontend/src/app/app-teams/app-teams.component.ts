@@ -59,6 +59,7 @@ export class AppTeamsComponent implements OnInit{
   }
 
   validate(form: any){
+    this.validator.errors = 0;
     this.errorMessageName = this.validator.validateName(form.name);
     this.errorMessageCountry = this.validator.validateName(form.country);
     this.errorMessageOwner = this.validator.validateName(form.owner);

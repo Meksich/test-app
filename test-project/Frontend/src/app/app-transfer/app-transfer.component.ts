@@ -21,8 +21,8 @@ export class AppTransferComponent implements OnInit{
   player: any;
   team: any;
 
-  selectedPlayer: number = 1;
-  selectedTeam: number = 1;
+  selectedPlayer: number;
+  selectedTeam: number;
   
   playerPresent = false;
   teamPresent = false;
@@ -41,6 +41,8 @@ export class AppTransferComponent implements OnInit{
   }
 
   selectChangeTeamHandler (event: any) {
+    if (this.selectedTeam==undefined)
+      return;
     this.selectedTeam = event.target.value;
     this.teamPresent = !this.teamPresent;
     this.team = this.teams.find(team1 => team1.id == this.selectedTeam);;
@@ -48,6 +50,8 @@ export class AppTransferComponent implements OnInit{
   }
 
   startTransfer() {
+    if (this.selectedPlayer==undefined)
+      return;
     this.playerPresent = !this.playerPresent;
     this.player = this.players.find(player1 => player1.id == this.selectedPlayer);
   }
